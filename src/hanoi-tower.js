@@ -1,5 +1,3 @@
-const { NotImplementedError } = require('../extensions/index.js');
-
 /**
  * Calculate turns number and time (in seconds) required
  * to solve puzzle
@@ -14,9 +12,18 @@ const { NotImplementedError } = require('../extensions/index.js');
  * calculateHanoi(9, 4308) => { turns: 511, seconds: 427 }
  *
  */
-function calculateHanoi(/* disksNumber, turnsSpeed */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function calculateHanoi(disksNumber, turnsSpeed) {
+  let turns = 3;
+
+  if (disksNumber === 2) {
+    return { turns: turns, seconds: Math.floor(turns/turnsSpeed*3600) };
+  }
+
+  for (let i = 2; i < disksNumber; i++) {
+    turns = (turns * 2) + 1;
+  }
+
+  return { turns: turns, seconds: Math.floor(turns/turnsSpeed*3600) }
 }
 
 module.exports = {
